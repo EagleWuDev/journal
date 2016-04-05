@@ -42,7 +42,7 @@
 			
 			else {
 			
-			$query = "INSERT INTO `users` (`email`, `password`) VALUES ('".mysqli_real_escape_string($link, $_POST['email'])."', '".md5(md5($_POST['email']).$_POST['password'])."')";
+			$query = "INSERT INTO `users` (`email`, `password`) VALUES ('".mysqli_real_escape_string($link, $_POST['email'])."',salted password)."')";
    
     		mysqli_query($link, $query);
     		
@@ -61,7 +61,7 @@
 	if ($_POST['submit'] == "Log In") {	
 	
 		$query = "SELECT * FROM users WHERE email='".mysqli_real_escape_string($link, $_POST['loginemail'])."'AND 
-		password='" .md5(md5($_POST['loginemail']) .$_POST['loginpassword']). "'LIMIT 1";
+		password='" salted password "'LIMIT 1";
 
 		$result = mysqli_query($link, $query);
 		
